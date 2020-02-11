@@ -23,10 +23,9 @@ def SelectLayerByLocation(geometryImput, geometryTarget, outPath):
 	src = driver.CreateDataSource(outPath)
 	layer = src.CreateLayer(outPath, spatialReference, geom_type=layerInput.GetGeomType())
 
-	rows = list()
 	for i in layerTarget:
 		layerInput.SetSpatialFilter(i.GetGeometryRef())
-		rows.extend(map(lambda i: layer.CreateFeature(i), layerInput))
+		map(lambda i: layer.CreateFeature(i), layerInput)
 		layerInput.SetSpatialFilter(None)
 
 
