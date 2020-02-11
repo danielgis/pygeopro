@@ -2,9 +2,9 @@
 
 from osgeo import ogr
 
-geometryImput = 'ccpp_prj.shp' # Shapefile a filtrar spacialmente
-geometryTarget = 'polygon.shp' # Shapefile de área de consulta
-outPath = 'out.shp' # Ubicación de salida de archivo shapefile
+geometryImput = '' # Shapefile a filtrar espacialmente
+geometryTarget = '' # Shapefile de area de consulta
+outPath = '' # Ubicacion de salida de archivo shapefile
 
 def SelectLayerByLocation(geometryImput, geometryTarget, outPath):
 
