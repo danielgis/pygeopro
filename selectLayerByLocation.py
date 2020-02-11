@@ -21,11 +21,12 @@ def SelectLayerByLocation(geometryImput, geometryTarget, outPath):
 
 	driver = ogr.GetDriverByName(_DRIVER_SHP)
 	src = driver.CreateDataSource(outPath)
-	layer = src.CreateLayer(outPath, spatialReference, geom_type=layerInput.GetGeomType())
+	layer = src.CreateLayer(outPath, spatialReference, layerInput.GetGeomType())
 
+	rows = list()
 	for i in layerTarget:
 		layerInput.SetSpatialFilter(i.GetGeometryRef())
-		map(lambda i: layer.CreateFeature(i), layerInput)
+		rows.extend(map(lambda i: layer.CreateFeature(i), layerInput))
 		layerInput.SetSpatialFilter(None)
 
 
